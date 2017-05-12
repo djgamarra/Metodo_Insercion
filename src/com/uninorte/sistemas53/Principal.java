@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
  * Created by pilo_injema on 9/05/2017.
  */
 public class Principal extends JFrame implements ActionListener {
-        //lel
+
     int contd = 0, ituno[] = new int[50], itdos[] = new int[50], ittres[] = new int[50], itcuatro[] = new int[50], itcinco[] = new int[50], itseis[] = new int[50], iti[] = new int[50], itj[] = new int[50], itvar[] = new int[50];
     JButton ok, siguiente, anterior;
     JPanel def, espejo, otros;
