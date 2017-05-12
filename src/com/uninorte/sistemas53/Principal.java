@@ -6,25 +6,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by pilo_injema on 9/05/2017.
- */
 public class Principal extends JFrame implements ActionListener {
 
     int contd = 0, ituno[] = new int[50], itdos[] = new int[50], ittres[] = new int[50], itcuatro[] = new int[50], itcinco[] = new int[50], itseis[] = new int[50], iti[] = new int[50], itj[] = new int[50], itvar[] = new int[50];
-    JButton ok, siguiente, anterior;
+    RoundedCornerButton ok, siguiente, anterior;
     JPanel def, espejo, otros;
     JLabel bienv, gene, rellu, relld;
     JTextField u, d, t, c, ci, s, eu, ed, et, ec, eci, es, textvar, textj, texti;
-    Color light, dark, turquesa, cereza, esmeralda, celeste, fucsia;
+    Color light, dark, turquesa, cereza, esmeralda, celeste, fucsia, n;
 
     public Principal() {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Metodo de inserción");
         this.setResizable(false);
-        this.setSize(800, 400);
+        this.setSize(800, 330);
         this.setLocationRelativeTo(null);
-        this.setLayout(new GridLayout(5, 1, 3, 3));
+        this.setLayout(new GridLayout(5, 1, 6, 6));
 
         relld = new JLabel();
         rellu = new JLabel();
@@ -32,9 +29,9 @@ public class Principal extends JFrame implements ActionListener {
         def = new JPanel();
         espejo = new JPanel();
         otros = new JPanel();
-        anterior = new JButton("Anterior");
-        ok = new JButton("Aceptar");
-        siguiente = new JButton("Siguiente");
+        anterior = new RoundedCornerButton("Anterior");
+        ok = new RoundedCornerButton("Aceptar");
+        siguiente = new RoundedCornerButton("Siguiente");
         bienv = new JLabel("Rellene al arreglo");
         gene = new JLabel("Arreglo generado");
         u = new JTextField("");
@@ -53,9 +50,6 @@ public class Principal extends JFrame implements ActionListener {
         textj = new JTextField(" j:");
         texti = new JTextField(" i:");
 
-        this.ok.setFocusPainted(false);
-        this.ok.setContentAreaFilled(false);
-
         this.eu.setEditable(false);
         this.ed.setEditable(false);
         this.et.setEditable(false);
@@ -66,18 +60,19 @@ public class Principal extends JFrame implements ActionListener {
         this.textj.setEditable(false);
         this.textvar.setEditable(false);
 
-        light = new Color(236, 240, 241);
-        dark = new Color(44, 62, 80);
+        light = new Color(245, 245, 245);
+        dark = new Color(38, 50, 56);
         turquesa = new Color(22, 160, 133);
         cereza = new Color(231, 76, 60);
         esmeralda = new Color(46, 204, 113);
         celeste = new Color(128, 222, 234);
-        fucsia = new Color(45, 204, 155);
+        fucsia = new Color(239, 93, 90);
+        n = new Color(26, 158, 156);
 
-        this.getContentPane().setBackground(turquesa);
-        this.def.setBackground(turquesa);
-        this.espejo.setBackground(turquesa);
-        this.otros.setBackground(turquesa);
+        this.getContentPane().setBackground(light);
+        this.def.setBackground(light);
+        this.espejo.setBackground(light);
+        this.otros.setBackground(light);
 
         this.bienv.setHorizontalAlignment((int) Principal.CENTER_ALIGNMENT);
         this.gene.setHorizontalAlignment((int) Principal.CENTER_ALIGNMENT);
@@ -88,9 +83,9 @@ public class Principal extends JFrame implements ActionListener {
         this.textvar.setForeground(dark);
         this.texti.setForeground(dark);
         this.textj.setForeground(dark);
-        this.textvar.setBorder(new LineBorder(dark));
-        this.texti.setBorder(new LineBorder(dark));
-        this.textj.setBorder(new LineBorder(dark));
+        this.textvar.setBorder(new RoundedCornerBorder());
+        this.texti.setBorder(new RoundedCornerBorder());
+        this.textj.setBorder(new RoundedCornerBorder());
 
         this.u.setBackground(esmeralda);
         this.d.setBackground(esmeralda);
@@ -130,42 +125,71 @@ public class Principal extends JFrame implements ActionListener {
         this.eci.setBorder(new LineBorder(dark));
         this.es.setBorder(new LineBorder(dark));
 
-        this.ok.setBackground(esmeralda);
+        this.u.setSelectionColor(dark);
+        this.u.setSelectedTextColor(light);
+        this.d.setSelectionColor(dark);
+        this.d.setSelectedTextColor(light);
+        this.t.setSelectionColor(dark);
+        this.t.setSelectedTextColor(light);
+        this.c.setSelectionColor(dark);
+        this.c.setSelectedTextColor(light);
+        this.ci.setSelectionColor(dark);
+        this.ci.setSelectedTextColor(light);
+        this.s.setSelectionColor(dark);
+        this.s.setSelectedTextColor(light);
+        this.eu.setSelectionColor(dark);
+        this.eu.setSelectedTextColor(light);
+        this.ed.setSelectionColor(dark);
+        this.ed.setSelectedTextColor(light);
+        this.et.setSelectionColor(dark);
+        this.et.setSelectedTextColor(light);
+        this.ec.setSelectionColor(dark);
+        this.ec.setSelectedTextColor(light);
+        this.eci.setSelectionColor(dark);
+        this.eci.setSelectedTextColor(light);
+        this.es.setSelectionColor(dark);
+        this.es.setSelectedTextColor(light);
+
+        this.ok.setFocusPainted(false);
+        this.siguiente.setFocusPainted(false);
+
+        this.bienv.setForeground(dark);
+        this.gene.setForeground(dark);
+
+        this.ok.setBackground(n);
         this.ok.setForeground(dark);
-        this.siguiente.setBackground(cereza);
+        this.ok.setBorder(new LineBorder(dark));
+        this.siguiente.setBackground(n);
         this.siguiente.setForeground(dark);
+        this.siguiente.setBorder(new LineBorder(dark));
         this.anterior.setBackground(light);
         this.anterior.setForeground(dark);
         this.anterior.setBorder(new LineBorder(dark));
 
-        this.bienv.setFont(u.getFont().deriveFont(20f));
-        this.gene.setFont(u.getFont().deriveFont(20f));
-        this.u.setFont(u.getFont().deriveFont(20f));
-        this.d.setFont(u.getFont().deriveFont(20f));
-        this.t.setFont(u.getFont().deriveFont(20f));
-        this.c.setFont(u.getFont().deriveFont(20f));
-        this.ci.setFont(u.getFont().deriveFont(20f));
-        this.s.setFont(u.getFont().deriveFont(20f));
-        this.eu.setFont(u.getFont().deriveFont(20f));
-        this.ed.setFont(u.getFont().deriveFont(20f));
-        this.et.setFont(u.getFont().deriveFont(20f));
-        this.ec.setFont(u.getFont().deriveFont(20f));
-        this.eci.setFont(u.getFont().deriveFont(20f));
-        this.es.setFont(u.getFont().deriveFont(20f));
-        this.anterior.setFont(u.getFont().deriveFont(20f));
-        this.siguiente.setFont(u.getFont().deriveFont(20f));
-        this.ok.setFont(u.getFont().deriveFont(20f));
-        this.textvar.setFont(u.getFont().deriveFont(20f));
-        this.textj.setFont(u.getFont().deriveFont(20f));
-        this.texti.setFont(u.getFont().deriveFont(20f));
+        this.bienv.setFont(u.getFont().deriveFont(30f));
+        this.gene.setFont(u.getFont().deriveFont(30f));
+        this.u.setFont(u.getFont().deriveFont(22f));
+        this.d.setFont(u.getFont().deriveFont(22f));
+        this.t.setFont(u.getFont().deriveFont(22f));
+        this.c.setFont(u.getFont().deriveFont(22f));
+        this.ci.setFont(u.getFont().deriveFont(22f));
+        this.s.setFont(u.getFont().deriveFont(22f));
+        this.eu.setFont(u.getFont().deriveFont(22f));
+        this.ed.setFont(u.getFont().deriveFont(22f));
+        this.et.setFont(u.getFont().deriveFont(22f));
+        this.ec.setFont(u.getFont().deriveFont(22f));
+        this.eci.setFont(u.getFont().deriveFont(22f));
+        this.es.setFont(u.getFont().deriveFont(22f));
+        this.anterior.setFont(u.getFont().deriveFont(22f));
+        this.siguiente.setFont(u.getFont().deriveFont(22f));
+        this.ok.setFont(u.getFont().deriveFont(22f));
+        this.textvar.setFont(u.getFont().deriveFont(22f));
+        this.textj.setFont(u.getFont().deriveFont(22f));
+        this.texti.setFont(u.getFont().deriveFont(22f));
 
-        this.def.setLayout(new GridLayout(1, 7, 5, 5));
-        this.espejo.setLayout(new GridLayout(1, 7, 5, 5));
-        this.otros.setLayout(new GridLayout(1, 6, 5, 5));
-
-        this.ok.setBorder(new Boton(10));
-        this.siguiente.setBorder(new Boton(20));
-
+        this.def.setLayout(new GridLayout(1, 7, 6, 6));
+        this.espejo.setLayout(new GridLayout(1, 7, 6, 6));
+        this.otros.setLayout(new GridLayout(1, 6, 6, 6));
 
         this.def.add(u);
         this.def.add(d);
@@ -187,7 +211,6 @@ public class Principal extends JFrame implements ActionListener {
         this.otros.add(textvar);
         this.otros.add(texti);
         this.otros.add(textj);
-        this.otros.add(anterior);
         this.otros.add(relld);
 
         this.add(bienv);
@@ -204,7 +227,6 @@ public class Principal extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ac) {
 
         int sw, cont = 0;
-
 
         if (ac.getSource().equals(ok)) {
             cont = 0;
@@ -226,104 +248,99 @@ public class Principal extends JFrame implements ActionListener {
                 for (int i = 1; i < 6; i++) {
                     int VAR = v[i];
                     int j = 0;
-                    ituno[cont] = v[0];
-                    itdos[cont] = v[1];
-                    ittres[cont] = v[2];
-                    itcuatro[cont] = v[3];
-                    itcinco[cont] = v[4];
-                    itseis[cont] = v[5];
-                    iti[cont] = i;
-                    itj[cont] = j;
-                    itvar[cont] = VAR;
+                    this.ituno[cont] = v[0];
+                    this.itdos[cont] = v[1];
+                    this.ittres[cont] = v[2];
+                    this.itcuatro[cont] = v[3];
+                    this.itcinco[cont] = v[4];
+                    this.itseis[cont] = v[5];
+                    this.iti[cont] = i;
+                    this.itj[cont] = j;
+                    this.itvar[cont] = VAR;
                     cont = cont + 1;
                     for (j = i - 1; j >= 0 && v[j] > VAR; j--) {
                         v[j + 1] = v[j];
-                        ituno[cont] = v[0];
-                        itdos[cont] = v[1];
-                        ittres[cont] = v[2];
-                        itcuatro[cont] = v[3];
-                        itcinco[cont] = v[4];
-                        itseis[cont] = v[5];
-                        iti[cont] = i;
-                        itj[cont] = j;
-                        itvar[cont] = VAR;
+                        this.ituno[cont] = v[0];
+                        this.itdos[cont] = v[1];
+                        this.ittres[cont] = v[2];
+                        this.itcuatro[cont] = v[3];
+                        this.itcinco[cont] = v[4];
+                        this.itseis[cont] = v[5];
+                        this.iti[cont] = i;
+                        this.itj[cont] = j;
+                        this.itvar[cont] = VAR;
                         cont = cont + 1;
                     }
                     v[j + 1] = VAR;
-                    ituno[cont] = v[0];
-                    itdos[cont] = v[1];
-                    ittres[cont] = v[2];
-                    itcuatro[cont] = v[3];
-                    itcinco[cont] = v[4];
-                    itseis[cont] = v[5];
-                    iti[cont] = i;
-                    itj[cont] = j;
-                    itvar[cont] = VAR;
+                    this.ituno[cont] = v[0];
+                    this.itdos[cont] = v[1];
+                    this.ittres[cont] = v[2];
+                    this.itcuatro[cont] = v[3];
+                    this.itcinco[cont] = v[4];
+                    this.itseis[cont] = v[5];
+                    this.iti[cont] = i;
+                    this.itj[cont] = j;
+                    this.itvar[cont] = VAR;
                     cont = cont + 1;
+                    this.eu.setText(" " + u.getText());
+                    this.ed.setText(" " + d.getText());
+                    this.et.setText(" " + t.getText());
+                    this.ec.setText(" " + c.getText());
+                    this.eci.setText(" " + ci.getText());
+                    this.es.setText(" " + s.getText());
                 }
             } catch (Exception ex) {
                 JOptionPane.showConfirmDialog(null, "Solo se aceptan digitos de tipo Entero en el array", "Error de digitacion", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
             }
-            eu.setText(" " + u.getText());
-            ed.setText(" " + d.getText());
-            et.setText(" " + t.getText());
-            ec.setText(" " + c.getText());
-            eci.setText(" " + ci.getText());
-            es.setText(" " + s.getText());
+
         }
         if (ac.getSource().equals(siguiente)) {
-            try {
+            if (ituno[contd] == 0 && itdos[contd] == 0 && ittres[contd] == 0 && itcuatro[contd] == 0 && itcinco[contd] == 0 && itseis[contd] == 0) {
+                JOptionPane.showConfirmDialog(null, "Arreglado completamente ordenado", "FIN", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            } else {
                 String swd;
                 swd = String.valueOf(ituno[contd]);
-                eu.setText(" " + swd);
+                this.eu.setText(" " + swd);
                 swd = String.valueOf(itdos[contd]);
-                ed.setText(" " + swd);
+                this.ed.setText(" " + swd);
                 swd = String.valueOf(ittres[contd]);
-                et.setText(" " + swd);
+                this.et.setText(" " + swd);
                 swd = String.valueOf(itcuatro[contd]);
-                ec.setText(" " + swd);
+                this.ec.setText(" " + swd);
                 swd = String.valueOf(itcinco[contd]);
-                eci.setText(" " + swd);
+                this.eci.setText(" " + swd);
                 swd = String.valueOf(itseis[contd]);
-                es.setText(" " + swd);
+                this.es.setText(" " + swd);
                 swd = String.valueOf(iti[contd]);
-                texti.setText(" i: " + swd);
+                this.texti.setText(" i: " + swd);
                 swd = String.valueOf(itj[contd]);
-                textj.setText(" j: " + swd);
+                this.textj.setText(" j: " + swd);
                 swd = String.valueOf(itvar[contd]);
-                textvar.setText(" VAR: " + swd);
-                contd = contd + 1;
-            } catch (Exception exc) {
-                contd--;
-                JOptionPane.showConfirmDialog(null, "Fin de las iteraciones", "FIN", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                this.textvar.setText(" VAR: " + swd);
+                this.contd = contd + 1;
             }
         }
         if (ac.getSource().equals(anterior)) {
-            try {
-                String swd;
-                swd = String.valueOf(ituno[contd]);
-                eu.setText(" " + swd);
-                swd = String.valueOf(itdos[contd]);
-                ed.setText(" " + swd);
-                swd = String.valueOf(ittres[contd]);
-                et.setText(" " + swd);
-                swd = String.valueOf(itcuatro[contd]);
-                ec.setText(" " + swd);
-                swd = String.valueOf(itcinco[contd]);
-                eci.setText(" " + swd);
-                swd = String.valueOf(itseis[contd]);
-                es.setText(" " + swd);
-                swd = String.valueOf(iti[contd]);
-                texti.setText(" i: " + swd);
-                swd = String.valueOf(itj[contd]);
-                textj.setText(" j: " + swd);
-                swd = String.valueOf(itvar[contd]);
-                textvar.setText(" VAR: " + swd);
-                contd = contd - 1;
-            } catch (Exception exc) {
-                contd++;
-                JOptionPane.showConfirmDialog(null, "Se encuentra en la primera iteracion", "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE);
-            }
+            this.contd = contd - 1;
+            String swd;
+            swd = String.valueOf(ituno[contd]);
+            this.eu.setText(" " + swd);
+            swd = String.valueOf(itdos[contd]);
+            this.ed.setText(" " + swd);
+            swd = String.valueOf(ittres[contd]);
+            this.et.setText(" " + swd);
+            swd = String.valueOf(itcuatro[contd]);
+            this.ec.setText(" " + swd);
+            swd = String.valueOf(itcinco[contd]);
+            this.eci.setText(" " + swd);
+            swd = String.valueOf(itseis[contd]);
+            this.es.setText(" " + swd);
+            swd = String.valueOf(iti[contd]);
+            this.texti.setText(" i: " + swd);
+            swd = String.valueOf(itj[contd]);
+            this.textj.setText(" j: " + swd);
+            swd = String.valueOf(itvar[contd]);
+            this.textvar.setText(" VAR: " + swd);
         }
     }
 }
